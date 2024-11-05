@@ -1,0 +1,4 @@
+"0",""
+"0","# Overlay normal density"
+"0","curve(dnorm(x, mean = mean(b1.skew), sd = sd(b1.skew)), add = TRUE, col = ""red"")"
+"0",""

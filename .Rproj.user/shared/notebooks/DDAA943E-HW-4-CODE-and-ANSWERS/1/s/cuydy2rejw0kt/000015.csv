@@ -1,0 +1,2 @@
+"0",""
+"0","hist(se.het.hc, main = ""Distribution of Standard Errors (Heteroskedasticity Consistent)"", xlab = ""Standard Error"", col = ""yellow"", breaks = 40)"

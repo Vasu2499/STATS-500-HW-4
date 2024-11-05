@@ -1,0 +1,6 @@
+"0","# Residuals vs. Leverage"
+"0","ggplot(diagnostics, aes(.hat, .std.resid)) +"
+"0","  geom_point(color = ""blue"", alpha = 0.6) +"
+"0","  geom_smooth(se = FALSE, color = ""red"") +"
+"0","  labs(title = ""Residuals vs Leverage"", x = ""Leverage"", y = ""Standardized Residuals"") +"
+"0","  theme_minimal()"

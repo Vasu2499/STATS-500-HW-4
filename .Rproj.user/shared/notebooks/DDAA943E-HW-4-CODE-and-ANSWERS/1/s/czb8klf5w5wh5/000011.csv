@@ -1,0 +1,4 @@
+"0",""
+"0","# Histogram for se.skew.hc"
+"0","hist(se.skew.hc, main = ""Distribution of Standard Errors (Heteroskedasticity Consistent)"","
+"0","     xlab = ""Standard Error"", col = ""yellow"", breaks = 40)"

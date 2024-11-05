@@ -1,0 +1,2 @@
+"0","art_sales <- as.data.frame(art_sales) "
+"0","# explicit conv to dataframe to avoid errors later "

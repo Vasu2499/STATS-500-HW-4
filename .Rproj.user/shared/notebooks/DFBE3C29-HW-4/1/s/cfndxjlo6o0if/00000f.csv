@@ -1,0 +1,8 @@
+"0","get_temp(""November"", 1999, data =nnmaps, celsius = TRUE,"
+"0","         average_fn = function(x) {"
+"0","           x %>% sort -> x"
+"0","           x[2:(length(x) - 1)] %>% mean %>% return"
+"0","         })"
+"2","Warning: Invalid month input. Please provide a valid month (1-12, full month name, or 3-letter abbreviation)."
+"1","NULL
+"

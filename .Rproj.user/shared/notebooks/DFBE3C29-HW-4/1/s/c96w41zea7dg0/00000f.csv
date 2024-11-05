@@ -1,0 +1,8 @@
+"0","suppressWarnings(nnmaps_month <-"
+"0","                   aggregate(nnmaps, by = list(nnmaps$month_numeric,"
+"0","                                               nnmaps$year),"
+"0","                             FUN = mean, na.rm = TRUE))"
+"0","nnmaps_month <- nnmaps_month[order(nnmaps_month$year,"
+"0","                                   nnmaps_month$month_numeric), ]"
+"0","with(nnmaps_month,"
+"0","     plot(o3 ~ date, type = ""l""))"

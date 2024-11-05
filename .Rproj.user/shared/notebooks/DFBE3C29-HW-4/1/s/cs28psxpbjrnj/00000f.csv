@@ -1,0 +1,9 @@
+"0","get_temp(2, 2005, data = nnmaps, celsius = TRUE, average_fn = function(x) {"
+"0","  x <- sort(x)"
+"0","  return(mean(x[2:(length(x) - 1)]))  "
+"0","})"
+"2","No data found for month: 2 and year: 2005
+"
+"2","Warning: No data available for the provided month and year."
+"1","NULL
+"

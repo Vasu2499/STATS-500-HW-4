@@ -1,0 +1,6 @@
+"0","# install.packages(""nycflights13"")"
+"0","library(tidyverse)"
+"0","library(nycflights13)"
+"0","library(kableExtra)"
+"0","# install.packages(""knitr"")"
+"0","library(knitr)"
