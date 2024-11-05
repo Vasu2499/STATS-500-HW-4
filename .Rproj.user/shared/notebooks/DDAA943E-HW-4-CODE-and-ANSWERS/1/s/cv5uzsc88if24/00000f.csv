@@ -1,3 +1,0 @@
-"0","# Histogram of error terms from the first iteration"
-"0","hist(Epsilon.skew[, 1], main = ""Histogram of Error Terms (Iteration 1)"","
-"0","     xlab = ""Error Terms"", breaks = 40, col = ""lightblue"")"

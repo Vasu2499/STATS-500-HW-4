@@ -1,2 +1,0 @@
-"0",""
-"0","hist(se.het, main = ""Distribution of Standard Errors (Homoskedasticity)"", xlab = ""Standard Error"", col = ""coral"", breaks = 40)"

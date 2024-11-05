@@ -1,3 +1,0 @@
-"0","# Histogram for se.skew"
-"0","hist(se.skew, main = ""Distribution of Standard Errors (Homoskedasticity)"","
-"0","     xlab = ""Standard Error"", col = ""coral"", breaks = 40)"

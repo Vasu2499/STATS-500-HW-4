@@ -1,6 +1,0 @@
-"0","# Normal Q-Q"
-"0","ggplot(diagnostics, aes(sample = .std.resid)) +"
-"0","  stat_qq(color = ""blue"") +"
-"0","  stat_qq_line(color = ""red"") +"
-"0","  labs(title = ""Normal Q-Q"", x = ""Theoretical Quantiles"", y = ""Standardized Residuals"") +"
-"0","  theme_minimal()"

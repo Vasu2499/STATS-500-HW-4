@@ -141,12 +141,12 @@
 \usepackage{setspace}
 \setstretch{1.2}
 \usepackage{geometry}
-\geometry{margin=0.6in}
+\geometry{margin=0.5in}
 \usepackage{parskip}
 \setlength{\parskip}{0.5em}
-\setlength{\parindent}{0.1em}
+\setlength{\parindent}{0.2em}
 \usepackage{listings}
-\lstset{breaklines=true}
+\lstset{breaklines=true, basicstyle=\footnotesize\ttfamily, linewidth=\textwidth, frame=single}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{caption}
@@ -222,6 +222,8 @@
 
 \subsection{Vasudha Rohatgi}\label{vasudha-rohatgi}
 
+Code Published at \url{https://github.com/Vasu2499/STATS-500-HW-4}
+
 \subsubsection{PROBLEM 1}\label{problem-1}
 
 \paragraph{\texorpdfstring{\ul{\textbf{PART
@@ -266,7 +268,8 @@ The following objects are masked from 'package:base':
 \FunctionTok{library}\NormalTok{(ggplot2)}
 
 
-\CommentTok{\# \# I created both vectors manually to avoid errors related to data loading/type mismatch }
+\DocumentationTok{\#\# I created both vectors manually to avoid errors }
+\DocumentationTok{\#\# related to data loading/type mismatch }
 
 \NormalTok{DATA\_X\_Y }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
   \AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.172038167}\NormalTok{, }\FloatTok{0.418466777}\NormalTok{, }\FloatTok{0.054523322}\NormalTok{, }\FloatTok{0.695505929}\NormalTok{, }\FloatTok{0.980692884}\NormalTok{, }\FloatTok{0.607070161}\NormalTok{, }
@@ -345,7 +348,8 @@ F-statistic: 57.62 on 1 and 98 DF,  p-value: 1.875e-11
 \FunctionTok{ggplot}\NormalTok{(diagnostics, }\FunctionTok{aes}\NormalTok{(.fitted, .resid)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals vs Fitted"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Fitted values"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Residuals"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals vs Fitted"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Fitted values"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Residuals"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -358,7 +362,8 @@ F-statistic: 57.62 on 1 and 98 DF,  p-value: 1.875e-11
 \FunctionTok{ggplot}\NormalTok{(diagnostics, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ .std.resid)) }\SpecialCharTok{+}
   \FunctionTok{stat\_qq}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{stat\_qq\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Normal Q{-}Q"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Theoretical Quantiles"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Standardized Residuals"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Normal Q{-}Q"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Theoretical Quantiles"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Standardized Residuals"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -367,11 +372,12 @@ F-statistic: 57.62 on 1 and 98 DF,  p-value: 1.875e-11
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Scale{-}Location (Square root of standardized residuals vs. fitted values)}
+\CommentTok{\# Scale{-}Location }
 \FunctionTok{ggplot}\NormalTok{(diagnostics, }\FunctionTok{aes}\NormalTok{(.fitted, }\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{abs}\NormalTok{(.std.resid)))) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scale{-}Location"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Fitted values"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Sqrt(|Standardized Residuals|)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scale{-}Location"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Fitted values"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Sqrt(|Standardized Residuals|)"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -388,7 +394,8 @@ F-statistic: 57.62 on 1 and 98 DF,  p-value: 1.875e-11
 \FunctionTok{ggplot}\NormalTok{(diagnostics, }\FunctionTok{aes}\NormalTok{(.hat, .std.resid)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals vs Leverage"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Leverage"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Standardized Residuals"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Residuals vs Leverage"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Leverage"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Standardized Residuals"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -458,23 +465,23 @@ undermine the reliability of coefficient estimates and inference.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{) }\CommentTok{\# For reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
 \NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{100}
 \NormalTok{B }\OtherTok{\textless{}{-}} \DecValTok{10000}
 \NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ DATA\_X\_Y}\SpecialCharTok{$}\NormalTok{x}
 \NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(B)}
 
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{B) \{}
-\NormalTok{  epsilon }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \FunctionTok{sqrt}\NormalTok{(}\FloatTok{0.75}\NormalTok{)) }\CommentTok{\# Normally distributed residuals}
-\NormalTok{  y }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{+} \DecValTok{5} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ epsilon }\CommentTok{\# Generate y}
-\NormalTok{  model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x) }\CommentTok{\# Fit linear model}
-\NormalTok{  results[b] }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(model)[}\DecValTok{2}\NormalTok{] }\CommentTok{\# Store the slope estimate}
+\NormalTok{  epsilon }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \FunctionTok{sqrt}\NormalTok{(}\FloatTok{0.75}\NormalTok{)) }
+\NormalTok{  y }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{+} \DecValTok{5} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ epsilon }
+\NormalTok{  model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x) }
+\NormalTok{  results[b] }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(model)[}\DecValTok{2}\NormalTok{] }
 \NormalTok{\}}
 
 \CommentTok{\# Calculate the coverage of the 80\% CI}
 \NormalTok{lower\_bound }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(results, }\FloatTok{0.1}\NormalTok{)}
 \NormalTok{upper\_bound }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(results, }\FloatTok{0.9}\NormalTok{)}
-\NormalTok{coverage }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((lower\_bound }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (upper\_bound }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{)) }\CommentTok{\# True slope is 5}
+\NormalTok{coverage }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((lower\_bound }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (upper\_bound }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{)) }
 \NormalTok{coverage}
 \end{Highlighting}
 \end{Shaded}
@@ -487,14 +494,14 @@ undermine the reliability of coefficient estimates and inference.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{) }\CommentTok{\# For reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{) }
 \NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{100}
 \NormalTok{B }\OtherTok{\textless{}{-}} \DecValTok{10000}
 \NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ DATA\_X\_Y}\SpecialCharTok{$}\NormalTok{x}
 \NormalTok{results\_log\_normal }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(B)}
 
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{B) \{}
-\NormalTok{  epsilon }\OtherTok{\textless{}{-}} \FunctionTok{rlnorm}\NormalTok{(n, }\AttributeTok{meanlog =} \DecValTok{0}\NormalTok{, }\AttributeTok{sdlog =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{{-}} \DecValTok{1} \CommentTok{\# Log{-}normal residuals, shifted to have mean zero}
+\NormalTok{  epsilon }\OtherTok{\textless{}{-}} \FunctionTok{rlnorm}\NormalTok{(n, }\AttributeTok{meanlog =} \DecValTok{0}\NormalTok{, }\AttributeTok{sdlog =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{{-}} \DecValTok{1} 
 \NormalTok{  y }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{+} \DecValTok{5} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ epsilon}
 \NormalTok{  model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x)}
 \NormalTok{  results\_log\_normal[b] }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(model)[}\DecValTok{2}\NormalTok{]}
@@ -502,9 +509,9 @@ undermine the reliability of coefficient estimates and inference.}
 
 \NormalTok{lower\_bound\_log\_normal }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(results\_log\_normal, }\FloatTok{0.1}\NormalTok{)}
 \NormalTok{upper\_bound\_log\_normal }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(results\_log\_normal, }\FloatTok{0.9}\NormalTok{)}
-\NormalTok{coverage\_log\_normal }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((lower\_bound\_log\_normal }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (upper\_bound\_log\_normal }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{))}
+\NormalTok{coverage\_log\_normal }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((lower\_bound\_log\_normal }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\&} 
+\NormalTok{                              (upper\_bound\_log\_normal }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{))}
 
-\CommentTok{\# Output}
 \FunctionTok{print}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower\_bound\_log\_normal, upper\_bound\_log\_normal, coverage\_log\_normal))}
 \end{Highlighting}
 \end{Shaded}
@@ -564,8 +571,8 @@ undermine the reliability of coefficient estimates and inference.}
 \NormalTok{  y }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{+} \DecValTok{5} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ epsilon}
   
   \CommentTok{\# Introduce outliers}
-  \ControlFlowTok{if}\NormalTok{ (b }\SpecialCharTok{\%\%} \DecValTok{100} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{ }\CommentTok{\# Introduce outliers every 100 simulations}
-\NormalTok{    y[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, n)] }\OtherTok{\textless{}{-}}\NormalTok{ y[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, n)] }\SpecialCharTok{+} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{15}\NormalTok{) }\CommentTok{\# Adding large positive and negative outliers}
+  \ControlFlowTok{if}\NormalTok{ (b }\SpecialCharTok{\%\%} \DecValTok{100} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{ }
+\NormalTok{    y[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, n)] }\OtherTok{\textless{}{-}}\NormalTok{ y[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, n)] }\SpecialCharTok{+} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{15}\NormalTok{) }
 \NormalTok{  \}}
   
 \NormalTok{  model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x)}
@@ -574,7 +581,8 @@ undermine the reliability of coefficient estimates and inference.}
 
 \NormalTok{lower\_bound\_outliers }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(results\_with\_outliers, }\FloatTok{0.1}\NormalTok{)}
 \NormalTok{upper\_bound\_outliers }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(results\_with\_outliers, }\FloatTok{0.9}\NormalTok{)}
-\NormalTok{coverage\_outliers }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((lower\_bound\_outliers }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (upper\_bound\_outliers }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{))}
+\NormalTok{coverage\_outliers }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((lower\_bound\_outliers }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\&} 
+\NormalTok{                            (upper\_bound\_outliers }\SpecialCharTok{\textgreater{}=} \DecValTok{5}\NormalTok{))}
 
 \CommentTok{\# Output}
 \FunctionTok{print}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower\_bound\_outliers, upper\_bound\_outliers, coverage\_outliers))}
@@ -602,14 +610,12 @@ results}\label{simulation-1-and-interpretation-of-results}
 \NormalTok{y }\OtherTok{=}\NormalTok{ dat}\SpecialCharTok{$}\NormalTok{y}
 \NormalTok{n }\OtherTok{=} \FunctionTok{length}\NormalTok{(x)}
 
-
-
 \DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
 \CommentTok{\#Population slope and intercept for simulations}
 \DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#}
+
 \NormalTok{beta0 }\OtherTok{=} \DecValTok{1}
 \NormalTok{beta1 }\OtherTok{=} \DecValTok{5}
-
 
 \DocumentationTok{\#\#\#\#\#\#\#\#\#\#}
 \CommentTok{\#Simulation for d{-}h}
@@ -666,7 +672,9 @@ results}\label{simulation-1-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram of error terms from the first iteration}
-\FunctionTok{hist}\NormalTok{(Epsilon.skew[, }\DecValTok{1}\NormalTok{], }\AttributeTok{main =} \StringTok{"Histogram of Error Terms (Iteration 1)"}\NormalTok{,}
+
+\FunctionTok{hist}\NormalTok{(Epsilon.skew[, }\DecValTok{1}\NormalTok{], }
+     \AttributeTok{main =} \StringTok{"Histogram of Error Terms (Iteration 1)"}\NormalTok{,}
      \AttributeTok{xlab =} \StringTok{"Error Terms"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -676,7 +684,9 @@ results}\label{simulation-1-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Normal Quantile Plot}
-\FunctionTok{qqnorm}\NormalTok{(Epsilon.skew[, }\DecValTok{1}\NormalTok{], }\AttributeTok{main =} \StringTok{"Normal Q{-}Q Plot of Error Terms (Iteration 1)"}\NormalTok{)}
+
+\FunctionTok{qqnorm}\NormalTok{(Epsilon.skew[, }\DecValTok{1}\NormalTok{], }
+       \AttributeTok{main =} \StringTok{"Normal Q{-}Q Plot of Error Terms (Iteration 1)"}\NormalTok{)}
 \FunctionTok{qqline}\NormalTok{(Epsilon.skew[, }\DecValTok{1}\NormalTok{], }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -688,7 +698,8 @@ results}\label{simulation-1-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram of estimated slopes}
-\FunctionTok{hist}\NormalTok{(b1.skew, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{main =} \StringTok{"Distribution of Sample Slopes"}\NormalTok{,}
+\FunctionTok{hist}\NormalTok{(b1.skew, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Distribution of Sample Slopes"}\NormalTok{,}
      \AttributeTok{xlab =} \StringTok{"Estimated Slope Coefficient"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 
 \CommentTok{\# Overlay normal density}
@@ -703,7 +714,8 @@ results}\label{simulation-1-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram for se.skew}
-\FunctionTok{hist}\NormalTok{(se.skew, }\AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Homoskedasticity)"}\NormalTok{,}
+\FunctionTok{hist}\NormalTok{(se.skew, }
+     \AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Homoskedasticity)"}\NormalTok{,}
      \AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"coral"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -713,7 +725,8 @@ results}\label{simulation-1-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram for se.skew.hc}
-\FunctionTok{hist}\NormalTok{(se.skew.hc, }\AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Heteroskedasticity Consistent)"}\NormalTok{,}
+\FunctionTok{hist}\NormalTok{(se.skew.hc, }
+     \AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Heteroskedasticity Consistent)"}\NormalTok{,}
      \AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"yellow"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -748,8 +761,8 @@ Mean of se.skew.hc: 0.303425
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# True population slope (replace with the actual value if different)}
-\NormalTok{true\_slope }\OtherTok{=}\NormalTok{ beta1}
+\CommentTok{\# True population slope }
+\NormalTok{true\_slope }\OtherTok{=} \DecValTok{5}
 
 \CommentTok{\# Confidence intervals using se.skew}
 \NormalTok{lower\_bound\_hom }\OtherTok{=}\NormalTok{ b1.skew }\SpecialCharTok{{-}} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\AttributeTok{df =}\NormalTok{ n }\SpecialCharTok{{-}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ se.skew}
@@ -766,8 +779,10 @@ Mean of se.skew.hc: 0.303425
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Coverage calculation}
-\NormalTok{coverage\_hom }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_hom }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&}\NormalTok{ upper\_bound\_hom }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
-\NormalTok{coverage\_het }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_het }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&}\NormalTok{ upper\_bound\_het }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
+\NormalTok{coverage\_hom }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_hom }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&} 
+\NormalTok{                      upper\_bound\_hom }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
+\NormalTok{coverage\_het }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_het }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&} 
+\NormalTok{                      upper\_bound\_het }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
 
 \FunctionTok{cat}\NormalTok{(}\StringTok{"Coverage using se.skew:"}\NormalTok{, coverage\_hom, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \end{Highlighting}
@@ -794,7 +809,8 @@ results}\label{simulation-2-and-interpretation-of-results}
 \begin{Highlighting}[]
 \NormalTok{Sigma }\OtherTok{=} \FunctionTok{diag}\NormalTok{((}\FloatTok{3.6}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(.}\DecValTok{75}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{abs}\NormalTok{(x }\SpecialCharTok{{-}} \DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)))}\SpecialCharTok{\^{}}\DecValTok{2}
 \NormalTok{Xmat }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,n), x)}
-\NormalTok{SD.b1.het }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{((}\FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(Xmat)}\SpecialCharTok{\%*\%}\NormalTok{Xmat)}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(Xmat)}\SpecialCharTok{\%*\%}\NormalTok{Sigma}\SpecialCharTok{\%*\%}\NormalTok{Xmat}\SpecialCharTok{\%*\%}\FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(Xmat)}\SpecialCharTok{\%*\%}\NormalTok{Xmat))[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\NormalTok{SD.b1.het }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{((}\FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(Xmat)}\SpecialCharTok{\%*\%}\NormalTok{Xmat)}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(Xmat)}\SpecialCharTok{\%*\%}
+\NormalTok{                    Sigma}\SpecialCharTok{\%*\%}\NormalTok{Xmat}\SpecialCharTok{\%*\%}\FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(Xmat)}\SpecialCharTok{\%*\%}\NormalTok{Xmat))[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{])}
 
 \NormalTok{nsim }\OtherTok{=} \DecValTok{10000}
 \NormalTok{b1.het }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, nsim)}
@@ -818,7 +834,8 @@ results}\label{simulation-2-and-interpretation-of-results}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(Epsilon.het[, }\DecValTok{1}\NormalTok{], }\AttributeTok{main =} \StringTok{"Histogram of Error Terms (Iteration 1)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Error Terms"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(Epsilon.het[, }\DecValTok{1}\NormalTok{], }\AttributeTok{main =} \StringTok{"Histogram of Error Terms (Iteration 1)"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Error Terms"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -837,7 +854,9 @@ results}\label{simulation-2-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram of estimated slopes}
-\FunctionTok{hist}\NormalTok{(b1.het, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{main =} \StringTok{"Distribution of Sample Slopes"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Estimated Slope Coefficient"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(b1.het, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Distribution of Sample Slopes"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Estimated Slope Coefficient"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 
 \CommentTok{\# Overlay normal density}
 \FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(b1.het), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(b1.het)), }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
@@ -849,7 +868,9 @@ results}\label{simulation-2-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram for se.het}
-\FunctionTok{hist}\NormalTok{(se.het, }\AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Homoskedasticity)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightcoral"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(se.het, }
+     \AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Homoskedasticity)"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"coral"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -858,7 +879,9 @@ results}\label{simulation-2-and-interpretation-of-results}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Histogram for se.het.hc}
-\FunctionTok{hist}\NormalTok{(se.het.hc, }\AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Heteroskedasticity Consistent)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightyellow"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(se.het.hc, }
+     \AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Heteroskedasticity Consistent)"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"yellow"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -901,8 +924,10 @@ Mean of se.het.hc: 0.4213828
 \NormalTok{upper\_bound\_het\_hc }\OtherTok{=}\NormalTok{ b1.het }\SpecialCharTok{+} \FunctionTok{qt}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\AttributeTok{df =}\NormalTok{ n }\SpecialCharTok{{-}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ se.het.hc}
 
 \CommentTok{\# Coverage calculation}
-\NormalTok{coverage\_hom\_het }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_hom\_het }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&}\NormalTok{ upper\_bound\_hom\_het }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
-\NormalTok{coverage\_het\_hc }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_het\_hc }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&}\NormalTok{ upper\_bound\_het\_hc }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
+\NormalTok{coverage\_hom\_het }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_hom\_het }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&} 
+\NormalTok{                          upper\_bound\_hom\_het }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
+\NormalTok{coverage\_het\_hc }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_het\_hc }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&} 
+\NormalTok{                         upper\_bound\_het\_hc }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
 
 \FunctionTok{cat}\NormalTok{(}\StringTok{"Coverage using se.het:"}\NormalTok{, coverage\_hom\_het, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \end{Highlighting}
@@ -926,7 +951,8 @@ PART(i)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(x, Epsilon.het[, }\DecValTok{1}\NormalTok{], }\AttributeTok{main =} \StringTok{"Scatter Plot of x vs. Epsilon (Iteration 1)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"x"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Epsilon"}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(x, Epsilon.het[, }\DecValTok{1}\NormalTok{], }\AttributeTok{main =} \StringTok{"Scatter Plot of x vs. Epsilon (Iteration 1)"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"x"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Epsilon"}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -936,7 +962,8 @@ PART(j)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(b1.het, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{main =} \StringTok{"Distribution of Sample Slopes"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Estimated Slope Coefficient"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(b1.het, }\AttributeTok{probability =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{main =} \StringTok{"Distribution of Sample Slopes"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Estimated Slope Coefficient"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{)}
 
 \FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(b1.het), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(b1.het)), }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
@@ -948,7 +975,9 @@ PART(k)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(se.het, }\AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Homoskedasticity)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"coral"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(se.het, }
+     \AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Homoskedasticity)"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"coral"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -956,7 +985,9 @@ PART(k)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(se.het.hc, }\AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Heteroskedasticity Consistent)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"yellow"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(se.het.hc, }
+     \AttributeTok{main =} \StringTok{"Distribution of Standard Errors (Heteroskedasticity Consistent)"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Standard Error"}\NormalTok{, }\AttributeTok{col =} \StringTok{"yellow"}\NormalTok{, }\AttributeTok{breaks =} \DecValTok{40}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1011,8 +1042,10 @@ PART(m)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{coverage\_hom\_het }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_hom\_het }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&}\NormalTok{ upper\_bound\_hom\_het }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
-\NormalTok{coverage\_het\_hc }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_het\_hc }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&}\NormalTok{ upper\_bound\_het\_hc }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
+\NormalTok{coverage\_hom\_het }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_hom\_het }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&} 
+\NormalTok{                          upper\_bound\_hom\_het }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
+\NormalTok{coverage\_het\_hc }\OtherTok{=} \FunctionTok{mean}\NormalTok{(lower\_bound\_het\_hc }\SpecialCharTok{\textless{}=}\NormalTok{ true\_slope }\SpecialCharTok{\&} 
+\NormalTok{                         upper\_bound\_het\_hc }\SpecialCharTok{\textgreater{}=}\NormalTok{ true\_slope)}
 
 \FunctionTok{cat}\NormalTok{(}\StringTok{"Coverage using se.het:"}\NormalTok{, coverage\_hom\_het, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \end{Highlighting}

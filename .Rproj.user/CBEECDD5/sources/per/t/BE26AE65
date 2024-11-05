@@ -1,9 +1,9 @@
 {
     "id": "BE26AE65",
-    "path": "C:/Users/vasud/OneDrive/Desktop/U-M - ALL/STATS 500/HW-4/HW-4-CODE-and-ANSWERS.qmd",
+    "path": "C:/Users/vasud/OneDrive/Desktop/U-M - ALL/STATS 500/HW-4/HW-4-Git/HW-4-CODE-and-ANSWERS.qmd",
     "project_path": "HW-4-CODE-and-ANSWERS.qmd",
     "type": "quarto_markdown",
-    "hash": "1251286194",
+    "hash": "3962609760",
     "contents": "",
     "dirty": false,
     "created": 1730768907520.0,
@@ -17,16 +17,16 @@
         "Source": "Source",
         "docOutlineVisible": "0",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "26,0",
+        "cursorPosition": "0,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "685:222.60870361328125"
+        "rmdVisualModeLocation": "525:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1730778703,
+    "lastKnownWriteTime": 1730788448,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1730778703845,
+    "last_content_update": 1730788448352,
     "read_only": false,
     "read_only_alternatives": []
 }

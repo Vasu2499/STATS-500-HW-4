@@ -1,6 +1,0 @@
-"0","# Scale-Location (Square root of standardized residuals vs. fitted values)"
-"0","ggplot(diagnostics, aes(.fitted, sqrt(abs(.std.resid)))) +"
-"0","  geom_point(color = ""blue"", alpha = 0.6) +"
-"0","  geom_smooth(se = FALSE, color = ""red"") +"
-"0","  labs(title = ""Scale-Location"", x = ""Fitted values"", y = ""Sqrt(|Standardized Residuals|)"") +"
-"0","  theme_minimal()"

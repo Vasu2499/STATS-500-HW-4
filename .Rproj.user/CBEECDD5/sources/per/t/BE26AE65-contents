@@ -10,25 +10,25 @@ format:
       - \usepackage{setspace}  
       - \setstretch{1.2}        
       - \usepackage{geometry}   
-      - \geometry{margin=0.6in}   
+      - \geometry{margin=0.5in} 
       - \usepackage{parskip}     
       - \setlength{\parskip}{0.5em}  
-      - \setlength{\parindent}{0.1em}
+      - \setlength{\parindent}{0.2em}  
       - \usepackage{listings}
-      - \lstset{breaklines=true}  
+      - \lstset{breaklines=true, basicstyle=\footnotesize\ttfamily, linewidth=\textwidth, frame=single}  
       - \usepackage{graphicx}    
       - \usepackage{longtable}    
       - \usepackage{caption}      
-      - \captionsetup{width=\textwidth} # Set caption width to text width
-      
-editor: visual
+      - \captionsetup{width=\textwidth}
 ---
 
-## STATS 500 - HOMEWORK 4 
+## STATS 500 - HOMEWORK 4
 
-## Vasudha Rohatgi 
+## Vasudha Rohatgi
 
-### PROBLEM 1  
+Code Published at <https://github.com/Vasu2499/STATS-500-HW-4>
+
+### PROBLEM 1
 
 #### [**PART (a)**]{.underline}
 
@@ -42,7 +42,8 @@ library(broom)
 library(ggplot2)
 
 
-# # I created both vectors manually to avoid errors related to data loading/type mismatch 
+## I created both vectors manually to avoid errors 
+## related to data loading/type mismatch 
 
 DATA_X_Y <- data.frame(
   x = c(0.172038167, 0.418466777, 0.054523322, 0.695505929, 0.980692884, 0.607070161, 
@@ -96,7 +97,8 @@ diagnostics <- augment(model)
 ggplot(diagnostics, aes(.fitted, .resid)) +
   geom_point(color = "blue", alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  labs(title = "Residuals vs Fitted", x = "Fitted values", y = "Residuals") +
+  labs(title = "Residuals vs Fitted", x = "Fitted values", 
+       y = "Residuals") +
   theme_minimal()
 
 ```
@@ -106,16 +108,18 @@ ggplot(diagnostics, aes(.fitted, .resid)) +
 ggplot(diagnostics, aes(sample = .std.resid)) +
   stat_qq(color = "blue") +
   stat_qq_line(color = "red") +
-  labs(title = "Normal Q-Q", x = "Theoretical Quantiles", y = "Standardized Residuals") +
+  labs(title = "Normal Q-Q", x = "Theoretical Quantiles", 
+       y = "Standardized Residuals") +
   theme_minimal()
 ```
 
 ```{r}
-# Scale-Location (Square root of standardized residuals vs. fitted values)
+# Scale-Location 
 ggplot(diagnostics, aes(.fitted, sqrt(abs(.std.resid)))) +
   geom_point(color = "blue", alpha = 0.6) +
   geom_smooth(se = FALSE, color = "red") +
-  labs(title = "Scale-Location", x = "Fitted values", y = "Sqrt(|Standardized Residuals|)") +
+  labs(title = "Scale-Location", x = "Fitted values", 
+       y = "Sqrt(|Standardized Residuals|)") +
   theme_minimal()
 ```
 
@@ -124,11 +128,12 @@ ggplot(diagnostics, aes(.fitted, sqrt(abs(.std.resid)))) +
 ggplot(diagnostics, aes(.hat, .std.resid)) +
   geom_point(color = "blue", alpha = 0.6) +
   geom_smooth(se = FALSE, color = "red") +
-  labs(title = "Residuals vs Leverage", x = "Leverage", y = "Standardized Residuals") +
+  labs(title = "Residuals vs Leverage", x = "Leverage", 
+       y = "Standardized Residuals") +
   theme_minimal()
 ```
 
-#### *Some observations* 
+#### *Some observations*
 
 -   **Residuals vs. Fitted Plot**:
 
@@ -157,23 +162,23 @@ ggplot(diagnostics, aes(.hat, .std.resid)) +
 [**NEXT SEGMENT OF PROBLEM - 1 : DATA GENERATION**]{.underline}
 
 ```{r}
-set.seed(123) # For reproducibility
+set.seed(123)
 n <- 100
 B <- 10000
 x <- DATA_X_Y$x
 results <- numeric(B)
 
 for (b in 1:B) {
-  epsilon <- rnorm(n, mean = 0, sd = sqrt(0.75)) # Normally distributed residuals
-  y <- 1 + 5 * x + epsilon # Generate y
-  model <- lm(y ~ x) # Fit linear model
-  results[b] <- coef(model)[2] # Store the slope estimate
+  epsilon <- rnorm(n, mean = 0, sd = sqrt(0.75)) 
+  y <- 1 + 5 * x + epsilon 
+  model <- lm(y ~ x) 
+  results[b] <- coef(model)[2] 
 }
 
 # Calculate the coverage of the 80% CI
 lower_bound <- quantile(results, 0.1)
 upper_bound <- quantile(results, 0.9)
-coverage <- mean((lower_bound <= 5) & (upper_bound >= 5)) # True slope is 5
+coverage <- mean((lower_bound <= 5) & (upper_bound >= 5)) 
 coverage
 
 ```
@@ -181,14 +186,14 @@ coverage
 **Checking the effect of varying the distribution of errors**
 
 ```{r}
-set.seed(123) # For reproducibility
+set.seed(123) 
 n <- 100
 B <- 10000
 x <- DATA_X_Y$x
 results_log_normal <- numeric(B)
 
 for (b in 1:B) {
-  epsilon <- rlnorm(n, meanlog = 0, sdlog = 0.5) - 1 # Log-normal residuals, shifted to have mean zero
+  epsilon <- rlnorm(n, meanlog = 0, sdlog = 0.5) - 1 
   y <- 1 + 5 * x + epsilon
   model <- lm(y ~ x)
   results_log_normal[b] <- coef(model)[2]
@@ -196,9 +201,9 @@ for (b in 1:B) {
 
 lower_bound_log_normal <- quantile(results_log_normal, 0.1)
 upper_bound_log_normal <- quantile(results_log_normal, 0.9)
-coverage_log_normal <- mean((lower_bound_log_normal <= 5) & (upper_bound_log_normal >= 5))
+coverage_log_normal <- mean((lower_bound_log_normal <= 5) & 
+                              (upper_bound_log_normal >= 5))
 
-# Output
 print(c(lower_bound_log_normal, upper_bound_log_normal, coverage_log_normal))
 
 ```
@@ -244,8 +249,8 @@ for (b in 1:B) {
   y <- 1 + 5 * x + epsilon
   
   # Introduce outliers
-  if (b %% 100 == 0) { # Introduce outliers every 100 simulations
-    y[c(1, n)] <- y[c(1, n)] + c(15, -15) # Adding large positive and negative outliers
+  if (b %% 100 == 0) { 
+    y[c(1, n)] <- y[c(1, n)] + c(15, -15) 
   }
   
   model <- lm(y ~ x)
@@ -254,7 +259,8 @@ for (b in 1:B) {
 
 lower_bound_outliers <- quantile(results_with_outliers, 0.1)
 upper_bound_outliers <- quantile(results_with_outliers, 0.9)
-coverage_outliers <- mean((lower_bound_outliers <= 5) & (upper_bound_outliers >= 5))
+coverage_outliers <- mean((lower_bound_outliers <= 5) & 
+                            (upper_bound_outliers >= 5))
 
 # Output
 print(c(lower_bound_outliers, upper_bound_outliers, coverage_outliers))
@@ -263,7 +269,7 @@ print(c(lower_bound_outliers, upper_bound_outliers, coverage_outliers))
 
 > **attached handwritten interpretation of results**
 
-#### Simulation-1 and interpretation of results 
+#### Simulation-1 and interpretation of results
 
 ```{r}
 library(sandwich)
@@ -273,14 +279,12 @@ x = dat$x
 y = dat$y
 n = length(x)
 
-
-
 ##############
 #Population slope and intercept for simulations
 ############
+
 beta0 = 1
 beta1 = 5
-
 
 ##########
 #Simulation for d-h
@@ -330,15 +334,19 @@ for(i in 1:nsim)
 }
 ```
 
-#### **PART(d)** 
+#### **PART(d)**
 
 ```{r}
 # Histogram of error terms from the first iteration
-hist(Epsilon.skew[, 1], main = "Histogram of Error Terms (Iteration 1)",
+
+hist(Epsilon.skew[, 1], 
+     main = "Histogram of Error Terms (Iteration 1)",
      xlab = "Error Terms", breaks = 40, col = "lightblue")
 
 # Normal Quantile Plot
-qqnorm(Epsilon.skew[, 1], main = "Normal Q-Q Plot of Error Terms (Iteration 1)")
+
+qqnorm(Epsilon.skew[, 1], 
+       main = "Normal Q-Q Plot of Error Terms (Iteration 1)")
 qqline(Epsilon.skew[, 1], col = "red")
 
 ```
@@ -347,7 +355,8 @@ qqline(Epsilon.skew[, 1], col = "red")
 
 ```{r}
 # Histogram of estimated slopes
-hist(b1.skew, probability = TRUE, main = "Distribution of Sample Slopes",
+hist(b1.skew, probability = TRUE, 
+     main = "Distribution of Sample Slopes",
      xlab = "Estimated Slope Coefficient", col = "lightgreen", breaks = 40)
 
 # Overlay normal density
@@ -358,12 +367,15 @@ curve(dnorm(x, mean = mean(b1.skew), sd = sd(b1.skew)), add = TRUE, col = "red")
 #### PART(f)
 
 ```{r}
+
 # Histogram for se.skew
-hist(se.skew, main = "Distribution of Standard Errors (Homoskedasticity)",
+hist(se.skew, 
+     main = "Distribution of Standard Errors (Homoskedasticity)",
      xlab = "Standard Error", col = "coral", breaks = 40)
 
 # Histogram for se.skew.hc
-hist(se.skew.hc, main = "Distribution of Standard Errors (Heteroskedasticity Consistent)",
+hist(se.skew.hc, 
+     main = "Distribution of Standard Errors (Heteroskedasticity Consistent)",
      xlab = "Standard Error", col = "yellow", breaks = 40)
 
 # Check means
@@ -378,8 +390,8 @@ cat("Mean of se.skew.hc:", mean_se_skew_hc, "\n")
 #### **PART(g)**
 
 ```{r}
-# True population slope (replace with the actual value if different)
-true_slope = beta1
+# True population slope 
+true_slope = 5
 
 # Confidence intervals using se.skew
 lower_bound_hom = b1.skew - qt(0.975, df = n - 2) * se.skew
@@ -395,20 +407,23 @@ upper_bound_het = b1.skew + qt(0.975, df = n - 2) * se.skew.hc
 
 ```{r}
 # Coverage calculation
-coverage_hom = mean(lower_bound_hom <= true_slope & upper_bound_hom >= true_slope)
-coverage_het = mean(lower_bound_het <= true_slope & upper_bound_het >= true_slope)
+coverage_hom = mean(lower_bound_hom <= true_slope & 
+                      upper_bound_hom >= true_slope)
+coverage_het = mean(lower_bound_het <= true_slope & 
+                      upper_bound_het >= true_slope)
 
 cat("Coverage using se.skew:", coverage_hom, "\n")
 cat("Coverage using se.skew.hc:", coverage_het, "\n")
 
 ```
 
-#### Simulation-2 and interpretation of results 
+#### Simulation-2 and interpretation of results
 
 ```{r}
 Sigma = diag((3.6*sqrt(.75)*abs(x - 1/2)))^2
 Xmat = cbind(rep(1,n), x)
-SD.b1.het = sqrt((solve(t(Xmat)%*%Xmat)%*%t(Xmat)%*%Sigma%*%Xmat%*%solve(t(Xmat)%*%Xmat))[2,2])
+SD.b1.het = sqrt((solve(t(Xmat)%*%Xmat)%*%t(Xmat)%*%
+                    Sigma%*%Xmat%*%solve(t(Xmat)%*%Xmat))[2,2])
 
 nsim = 10000
 b1.het = rep(0, nsim)
@@ -431,23 +446,30 @@ for(i in 1:nsim)
 
 ```{r}
 
-hist(Epsilon.het[, 1], main = "Histogram of Error Terms (Iteration 1)", xlab = "Error Terms", breaks = 40, col = "lightblue")
+hist(Epsilon.het[, 1], main = "Histogram of Error Terms (Iteration 1)", 
+     xlab = "Error Terms", breaks = 40, col = "lightblue")
 
 # Normal Quantile Plot
 qqnorm(Epsilon.het[, 1], main = "Normal Q-Q Plot of Error Terms (Iteration 1)")
 qqline(Epsilon.het[, 1], col = "red")
 
 # Histogram of estimated slopes
-hist(b1.het, probability = TRUE, main = "Distribution of Sample Slopes", xlab = "Estimated Slope Coefficient", col = "lightgreen", breaks = 40)
+hist(b1.het, probability = TRUE, 
+     main = "Distribution of Sample Slopes", 
+     xlab = "Estimated Slope Coefficient", col = "lightgreen", breaks = 40)
 
 # Overlay normal density
 curve(dnorm(x, mean = mean(b1.het), sd = sd(b1.het)), add = TRUE, col = "red")
 
 # Histogram for se.het
-hist(se.het, main = "Distribution of Standard Errors (Homoskedasticity)", xlab = "Standard Error", col = "lightcoral", breaks = 40)
+hist(se.het, 
+     main = "Distribution of Standard Errors (Homoskedasticity)", 
+     xlab = "Standard Error", col = "coral", breaks = 40)
 
 # Histogram for se.het.hc
-hist(se.het.hc, main = "Distribution of Standard Errors (Heteroskedasticity Consistent)", xlab = "Standard Error", col = "lightyellow", breaks = 40)
+hist(se.het.hc, 
+     main = "Distribution of Standard Errors (Heteroskedasticity Consistent)", 
+     xlab = "Standard Error", col = "yellow", breaks = 40)
 
 mean_se_het = mean(se.het)
 mean_se_het_hc = mean(se.het.hc)
@@ -467,8 +489,10 @@ lower_bound_het_hc = b1.het - qt(0.975, df = n - 2) * se.het.hc
 upper_bound_het_hc = b1.het + qt(0.975, df = n - 2) * se.het.hc
 
 # Coverage calculation
-coverage_hom_het = mean(lower_bound_hom_het <= true_slope & upper_bound_hom_het >= true_slope)
-coverage_het_hc = mean(lower_bound_het_hc <= true_slope & upper_bound_het_hc >= true_slope)
+coverage_hom_het = mean(lower_bound_hom_het <= true_slope & 
+                          upper_bound_hom_het >= true_slope)
+coverage_het_hc = mean(lower_bound_het_hc <= true_slope & 
+                         upper_bound_het_hc >= true_slope)
 
 cat("Coverage using se.het:", coverage_hom_het, "\n")
 cat("Coverage using se.het.hc:", coverage_het_hc, "\n")
@@ -480,14 +504,16 @@ PART(i)
 
 ```{r}
 
-plot(x, Epsilon.het[, 1], main = "Scatter Plot of x vs. Epsilon (Iteration 1)", xlab = "x", ylab = "Epsilon", col = "blue", pch = 19, cex=0.8)
+plot(x, Epsilon.het[, 1], main = "Scatter Plot of x vs. Epsilon (Iteration 1)", 
+     xlab = "x", ylab = "Epsilon", col = "blue", pch = 19, cex=0.8)
 
 ```
 
 PART(j)
 
 ```{r}
-hist(b1.het, probability = TRUE, main = "Distribution of Sample Slopes", xlab = "Estimated Slope Coefficient", col = "lightgreen", breaks = 30)
+hist(b1.het, probability = TRUE, main = "Distribution of Sample Slopes", 
+     xlab = "Estimated Slope Coefficient", col = "lightgreen", breaks = 30)
 
 curve(dnorm(x, mean = mean(b1.het), sd = sd(b1.het)), add = TRUE, col = "red")
 
@@ -498,9 +524,13 @@ PART(k)
 
 ```{r}
 
-hist(se.het, main = "Distribution of Standard Errors (Homoskedasticity)", xlab = "Standard Error", col = "coral", breaks = 40)
+hist(se.het, 
+     main = "Distribution of Standard Errors (Homoskedasticity)", 
+     xlab = "Standard Error", col = "coral", breaks = 40)
 
-hist(se.het.hc, main = "Distribution of Standard Errors (Heteroskedasticity Consistent)", xlab = "Standard Error", col = "yellow", breaks = 40)
+hist(se.het.hc, 
+     main = "Distribution of Standard Errors (Heteroskedasticity Consistent)", 
+     xlab = "Standard Error", col = "yellow", breaks = 40)
 
 mean_se_het = mean(se.het)
 mean_se_het_hc = mean(se.het.hc)
@@ -524,8 +554,10 @@ upper_bound_het_hc = b1.het + qt(0.975, df = n - 2) * se.het.hc
 PART(m)
 
 ```{r}
-coverage_hom_het = mean(lower_bound_hom_het <= true_slope & upper_bound_hom_het >= true_slope)
-coverage_het_hc = mean(lower_bound_het_hc <= true_slope & upper_bound_het_hc >= true_slope)
+coverage_hom_het = mean(lower_bound_hom_het <= true_slope & 
+                          upper_bound_hom_het >= true_slope)
+coverage_het_hc = mean(lower_bound_het_hc <= true_slope & 
+                         upper_bound_het_hc >= true_slope)
 
 cat("Coverage using se.het:", coverage_hom_het, "\n")
 cat("Coverage using se.het.hc:", coverage_het_hc, "\n")

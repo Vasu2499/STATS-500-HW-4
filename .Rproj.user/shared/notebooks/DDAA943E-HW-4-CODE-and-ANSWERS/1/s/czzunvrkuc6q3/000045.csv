@@ -1,3 +1,0 @@
-"0",""
-"0","# Histogram for se.het.hc"
-"0","hist(se.het.hc, main = ""Distribution of Standard Errors (Heteroskedasticity Consistent)"", xlab = ""Standard Error"", col = ""lightyellow"", breaks = 40)"
