@@ -154,8 +154,6 @@
 \usepackage{mathptmx}
 \usepackage{mdframed}
 \mdfdefinestyle{boxedoutputstyle}{linewidth=1pt, roundcorner=5pt}
-\AtBeginEnvironment{Shaded}{\begin{mdframed}[style=boxedoutputstyle]}
-\AtEndEnvironment{Shaded}{\end{mdframed}}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%

@@ -391,7 +391,7 @@ cat("Mean of se.skew.hc:", mean_se_skew_hc, "\n")
 
 ```
 
-#### **PART(g) - Confidence Intervals** 
+#### **PART(g) - Confidence Intervals**
 
 ```{r}
 
