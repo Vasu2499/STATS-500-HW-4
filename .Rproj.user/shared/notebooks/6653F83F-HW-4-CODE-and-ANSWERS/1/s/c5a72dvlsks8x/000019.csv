@@ -1,0 +1,2 @@
+"0",""
+"0","curve(dnorm(x, mean = mean(b1.het), sd = sd(b1.het)), add = TRUE, col = ""darkred"")"

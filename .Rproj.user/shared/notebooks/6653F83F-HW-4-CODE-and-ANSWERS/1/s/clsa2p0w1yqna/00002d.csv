@@ -1,0 +1,3 @@
+"0",""
+"0","# Normal Quantile Plot"
+"0","qqnorm(Epsilon.het[, 1], main = ""Normal Q-Q Plot of Error Terms (Iteration 1)"")"

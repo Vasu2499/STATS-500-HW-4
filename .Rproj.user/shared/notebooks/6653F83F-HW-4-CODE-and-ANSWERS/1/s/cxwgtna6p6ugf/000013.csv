@@ -1,0 +1,4 @@
+"0",""
+"0","plot(x, Epsilon.het[, 1], main = ""Scatter Plot of x vs. Epsilon (Iteration 1)"", "
+"0","     xlab = ""x"", ylab = ""Epsilon"", col = ""navy"", pch = 19, cex=0.8)"
+"0",""

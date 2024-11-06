@@ -1,0 +1,2 @@
+"0","hist(b1.het, probability = TRUE, main = ""Distribution of Sample Slopes"", "
+"0","     xlab = ""Estimated Slope Coefficient"", col = ""limegreen"", breaks = 30)"

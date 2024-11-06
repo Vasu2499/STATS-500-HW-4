@@ -1,0 +1,7 @@
+"0","# Scale-Location "
+"0","ggplot(diagnostics, aes(.fitted, sqrt(abs(.std.resid)))) +"
+"0","  geom_point(color = ""navy"", alpha = 0.8) +"
+"0","  geom_smooth(se = FALSE, color = ""darkred"") +"
+"0","  labs(title = ""Scale-Location"", x = ""Fitted values"", "
+"0","       y = ""Sqrt( | Standardized Residuals | )"") +"
+"0","  theme_minimal()"

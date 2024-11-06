@@ -3,7 +3,7 @@
     "path": "C:/Users/vasud/OneDrive/Desktop/U-M - ALL/STATS 500/HW-4/HW-4-Git/HW-4-CODE-and-ANSWERS.qmd",
     "project_path": "HW-4-CODE-and-ANSWERS.qmd",
     "type": "quarto_markdown",
-    "hash": "3962609760",
+    "hash": "1652506435",
     "contents": "",
     "dirty": false,
     "created": 1730768907520.0,
@@ -19,14 +19,15 @@
         "rmdVisualCollapsedChunks": "",
         "cursorPosition": "0,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "525:0"
+        "rmdVisualModeLocation": "803:0",
+        "docOutlineSize": "131"
     },
     "folds": "",
-    "lastKnownWriteTime": 1730788448,
+    "lastKnownWriteTime": 1730875179,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1730788448352,
+    "last_content_update": 1730875179418,
     "read_only": false,
     "read_only_alternatives": []
 }
